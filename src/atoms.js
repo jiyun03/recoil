@@ -8,5 +8,5 @@ export const flickrState = atom({
 
 export const tagState = atom({
   key: "tag",
-  default: "landscape",
+  default: "cloud",
 });

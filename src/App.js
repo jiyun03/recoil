@@ -2,8 +2,13 @@ import { useEffect } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { flickrState, tagState } from "./atoms";
 
+import { Route } from "react-router-dom";
+import Main from "./Main";
+import Sub from "./Sub";
+import Header from "./Header";
+
 function App() {
-  const [Pics, setPic] = useRecoilState(flickrState);
+  const [_, setPic] = useRecoilState(flickrState);
   const tag = useRecoilValue(tagState);
 
   const callFlickr = async () => {
@@ -23,19 +28,11 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {Pics.map((pic) => {
-        return (
-          <article key={pic.id}>
-            <h2>{pic.title}</h2>
-            <img
-              src={`https://live.staticflickr.com/${pic.server}/${pic.id}_${pic.secret}_m.jpg`}
-              alt={pic.title}
-            />
-          </article>
-        );
-      })}
-    </div>
+    <>
+      <Header />
+      <Route exact path="/" component={Main} />
+      <Route exact path="/sub" component={Sub} />
+    </>
   );
 }
 
