@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import { atom, useRecoilState } from "recoil";
-
-const flickrState = atom({
-  key: "flickr",
-  default: [],
-});
+import { useRecoilState } from "recoil";
+import { flickrState } from "./atoms";
 
 function App() {
   const [Pics, setPic] = useRecoilState(flickrState);
