@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
     callFlickr();
-  }, []);
+  }, [tag]);
 
   return (
     <>
