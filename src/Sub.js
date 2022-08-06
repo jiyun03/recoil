@@ -1,11 +1,23 @@
-import { useRecoilValue } from "recoil";
-import { flickrState } from "./atoms";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { flickrState, tagState } from "./atoms";
+
+import { useRef, useEffect } from "react";
 
 function Sub() {
   const pics = useRecoilValue(flickrState);
 
+  const input = useRef(null);
+  const [Tag, setTag] = useRecoilState(tagState);
+
+  useEffect(() => {
+    console.log(Tag);
+  }, [Tag]);
+
   return (
     <section>
+      <h1>SUB</h1>
+      <input type="text" ref={input} />
+      <button onClick={() => setTag(input.current.value)}>search</button>
       {pics.map((pic) => {
         return (
           <article key={pic.id}>

@@ -18,8 +18,6 @@ function App() {
 
     const res = await fetch(url);
     const body = await res.json();
-
-    console.log(body.photos.photo);
     setPic(body.photos.photo);
   };
 
